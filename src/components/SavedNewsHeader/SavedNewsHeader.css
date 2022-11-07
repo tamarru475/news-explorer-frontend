@@ -1,0 +1,110 @@
+.savedNewsHeader{
+ max-width: 1440px;
+ margin: 0 auto;
+}
+
+.savedNewsHeader__top-container{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ max-width: 100%;
+ border-bottom: 1px solid  rgba(26, 27, 34, 0.5);;
+}
+
+.savedNewsHeader__logo{
+ margin: 0;
+ font-family: 'Roboto Slab', sans-serif;
+ font-style: normal;
+ font-weight: 700;
+ font-size: 20px;
+ line-height: 24px;
+ padding-top: 30px;
+ padding-left: 104px;
+ padding-bottom: 26px;
+ color: #1A1B22;
+}
+
+.savedNewsHeader__nav-container{
+ display: flex;
+ gap: 64px;
+ padding-top: 19px;
+ padding-right: 104px;
+}
+
+.savedNewsHeader__nav-profile{
+ display: flex;
+ align-items: center;
+ gap: 19px;
+ font-family: 'Roboto', sans-serif;
+ font-style: normal;
+ font-weight: 500;
+ font-size: 18px;
+ line-height: 24px;
+ color: #1A1B22;
+ background: none;
+ border: 1px solid #D1D2D6;
+ border-radius: 100px;
+ cursor: pointer;
+ width: 112px;
+ height: 48px;
+ padding-top: 12px;
+ padding-bottom: 12px;
+ padding-left: 19px;
+ padding-right: 7px;
+ transition: 0.3s linear;
+}
+
+.savedNewsHeader__nav-profile:hover{
+ border: 1px solid #1A1B22;
+}
+
+
+.savedNewsHeader__nav-logout{
+ cursor: pointer;
+ width: 17.61px;
+ height: 16px;
+}
+
+.savedNewsHeader__text-container{
+ display: flex;
+ flex-direction: column;
+ padding-top: 40px;
+ padding-left: 104px;
+ padding-bottom: 56px;
+}
+
+.savedNewsHeader__subtext{
+ margin: 0;
+ font-family: 'Roboto', sans-serif;
+ font-style: normal;
+ font-weight: 400;
+ font-size: 18px;
+ line-height: 24px;
+ color: rgba(26, 27, 34, 0.5);
+}
+
+.savedNewsHeader__title{
+ margin: 0;
+ font-family: 'Roboto Slab', sans-serif;
+ font-style: normal;
+ font-weight: 400;
+ font-size: 40px;
+ line-height: 46px;
+ max-width: 530px;
+ padding-top: 28px;
+}
+
+.savedNewsHeader__keywords{
+ margin: 0;
+ font-family: 'Roboto', sans-serif;
+ font-style: normal;
+ font-weight: 400;
+ font-size: 18px;
+ line-height: 24px;
+ color: #1A1B22;
+ padding-top: 30px;
+}
+
+.savedNewsHeader__keywords-bold{
+ font-weight: bold;
+}

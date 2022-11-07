@@ -1,0 +1,113 @@
+.footer{
+ max-width: 1440px;
+ display: flex;
+ justify-content: space-between;
+
+}
+
+.footer__credit{
+ padding-top: 32px;
+ padding-bottom: 26px;
+ padding-left: 104px;
+ max-width: 433px;
+ margin: 0;
+ font-family: 'Roboto', sans-serif;
+ font-style: normal;
+ font-weight: 400;
+ font-size: 16px;
+ line-height: 22px;
+ color: #B6BCBF;
+}
+
+.footer__links-list{
+ list-style-type: none;
+ padding-top: 30px;
+ padding-bottom: 26px;
+ padding-right: 106px;
+ margin: 0;
+ display: flex;
+ gap: 40px;
+}
+
+.footer__links-link{
+ text-decoration: none;
+ transition: 0.3s linear;
+}
+
+.footer__links-link:hover{
+ opacity: 0.8;
+}
+
+.footer__links-social{
+ display: flex;
+ gap: 26.89px;
+ transition: 0.3s linear;
+}
+
+.footer__links-social:hover{
+    opacity: 0.8; 
+}
+
+.footer__links-home{
+ margin: 0;
+ text-decoration: none;
+ font-family: 'Roboto', sans-serif;
+ font-style: normal;
+ font-weight: 400;
+ font-size: 18px;
+ line-height: 24px;
+ color: #1A1B22;
+}
+
+.footer__links-practicum{
+ margin: 0;
+ text-decoration: none;
+ font-family: 'Roboto', sans-serif;
+ font-style: normal;
+ font-weight: 400;
+ font-size: 18px;
+ line-height: 24px;
+ color: #1A1B22;
+}
+
+.footer__links-github{
+ margin: 0;
+ background: url('../../images/github.svg') no-repeat center/cover;
+ width: 20px;
+ height: 20px;
+}
+
+.footer__links-facebook{
+ margin: 0;
+ background: url('../../images/facebook-squar.svg') no-repeat center/cover;
+ width: 20px;
+ height: 20px;
+}
+
+@media screen and (max-width: 900px){
+ .footer{
+  max-width: 768px;
+ }
+ .footer__credit{
+  padding-left: 40px;
+  padding-top: 24px;
+  padding-bottom: 18px;
+ }
+
+ .footer__links-list{
+   padding-top: 21px;
+   padding-bottom: 19px;
+   padding-right: 21px; 
+ }
+
+ .footer__links-github{
+  width: 22px;
+  height: 22px;
+ }
+
+ .footer__links-facebook{
+    background: url('../../images/facebook-icon.svg')  no-repeat center/cover;
+    width: 22px;
+    height: 22px;
+ }
+}

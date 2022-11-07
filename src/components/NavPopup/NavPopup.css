@@ -1,0 +1,56 @@
+.navPopup{
+ display: none;
+ color: #FFFFFF;
+}
+
+.navPopup_active{
+ background: #1A1B22;
+}
+
+.navPopup__button {
+ display: none;
+ flex-direction: column;
+ z-index: 3;
+ right: 35px;
+ top: 35px;
+ padding-top: 35px;
+ padding-bottom: 20px;
+ padding-right: 30px;
+ cursor: pointer;
+ transition: all 0.5s ease-out;
+}
+     
+.navPopup__button .navPopup__button-line {
+ width: 24px;
+ height: 3px;
+ margin: 0 0 5px 0;
+ background: #FFFFFF;
+ transition: all 0.5s ease-out;
+}
+     
+.navPopup__button-line:hover {
+ opacity: 0.85;
+}
+     
+.navPopup__button_active {
+ transform: rotate(180deg);
+}
+     
+.navPopup__button_active .navPopup__button-line:nth-child(1) {
+ transform: rotate(45deg) translate(5px, 5px);
+}
+     
+.navPopup__button_active .navPopup__button-line:nth-child(2) {
+ transform: rotate(-45deg) translate(7px, -6px);
+}
+
+
+@media screen and (max-width: 600px){
+ .navPopup{
+    display: flex;
+ }
+
+ .navPopup__button{
+    display: flex;
+ }
+}

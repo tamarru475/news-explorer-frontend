@@ -1,0 +1,122 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 5;
+    transition: 0.3s linear;
+  }
+  
+  .popup_fadein {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .popup__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 470px;
+  }
+  
+  .popup__close-button {
+    max-width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin-bottom: 6px;
+    background: url(../../images/Close_Icon.svg) no-repeat center/cover;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 40px;
+    height: 40px;
+    transition: opacity 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .popup__close-button:hover {
+    opacity: 0.6;
+    transform: rotate(45deg);
+  }
+  
+  .popup__form-container {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    width: 430px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .popup__header {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px; 
+    text-align: left;
+    color: #1A1B22;
+    align-self: flex-start;
+    padding-top: 34px;
+    padding-left: 36px;
+  }
+
+  .popup__form-link{
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    padding-bottom: 28px;
+   }
+
+  .popup__form-link_span{
+    margin: 0;
+    text-decoration: none;
+    color:  #2F71E5;
+    cursor: pointer;
+  }
+  
+  
+  @media screen and (max-width: 600px) {
+    .popup {
+      max-width: 282px;
+    }
+  
+    .popup__container {
+      width: 282px;
+    }
+  
+    .popup__close-button {
+      margin-bottom: 13.5px;
+      width: 26px;
+      height: 26px;
+    }
+  
+    .popup__form-container {
+      width: 100%;
+    }
+  
+    .popup__header {
+      font-size: 18px;
+      line-height: 22px;
+      padding-left: 22px;
+    }
+  }
