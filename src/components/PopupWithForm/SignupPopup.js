@@ -25,6 +25,13 @@ export default function EditProfilePopup(props) {
         }`;
 
 
+    React.useEffect(() => {
+        setEmail('');
+        setPassword('');
+        setUsername('');
+    }, [props.isOpen]);
+
+
     const onEmailChange = (e) => {
         setEmail(e.target.value);
         if (e.target.value.length === 0) {

@@ -52,7 +52,7 @@ export default function Header(props) {
             <div className='header__content-container' >
                 <h1 className='header__title'>What's going on in the world?</h1>
                 <p className='header__subtitle'>Find the latest news on any topic and save them in your personal account.</p>
-                <SearchForm onSubmit={props.onSearchSubmit} />
+                <SearchForm onSubmit={props.onSearchSubmit} isSearch={props.isSearch} />
             </div>
         </header>
     )

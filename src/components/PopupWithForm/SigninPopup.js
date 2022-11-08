@@ -20,6 +20,10 @@ export default function EditProfilePopup(props) {
     const showErrorInputClass = `${props.isValid ? "" : "form__input_type_error"
         }`;
 
+    React.useEffect(() => {
+        setEmail('');
+        setPassword('');
+    }, [props.isOpen]);
 
     const onEmailChange = (e) => {
         setEmail(e.target.value);

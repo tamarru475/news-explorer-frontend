@@ -96,6 +96,7 @@ function App() {
                             onSigninClick={handleSigninClick}
                             onNavClick={handlePopupNavClick}
                             onSearchSubmit={handleSearchSubmit}
+                            isSearch={isSearch}
                         />
                         <NavPopup
                             isOpen={isPopupNavOpen}
