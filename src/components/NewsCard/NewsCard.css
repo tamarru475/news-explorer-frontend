@@ -101,10 +101,11 @@ perspective: 1px;
  transition: 0.3s linear;
 }
 
-.newsCard__trash-icon:hover{
+.newsCard__trash-icon:active{
  background: url('../../images/trash-active.svg') no-repeat center/cover;  
 }
- .newsCard__righthand-container_delete:hover .newsCard__deleteMessage{
+
+.newsCard__deleteMessage_active{
  visibility: visible;
  opacity: 1;
 }
@@ -261,9 +262,11 @@ perspective: 1px;
    }
 
    .newsCard__text{
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    line-height: 22px;
+   }
+
+   .newsCard__deleteMessage_active{
+    visibility: hidden;
+    opacity: 0;
    }
 }

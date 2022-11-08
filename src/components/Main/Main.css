@@ -46,6 +46,8 @@
  padding-left: 99px;
  padding-bottom: 20px;
  padding-right: 98px;
+ cursor: pointer;
+ transition: 0.3s linear;
 }
 
 .main__button:hover{

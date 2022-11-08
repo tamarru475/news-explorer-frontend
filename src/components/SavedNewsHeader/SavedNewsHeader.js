@@ -25,6 +25,7 @@ export default function SavedNewsHeader(props) {
                             src={logoutIcon}
                             alt='logout'
                             className='savedNewsHeader__nav-logout'
+                            onClick={props.onSignoutClick}
                         />
                     </button>
                 </div>

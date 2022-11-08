@@ -69,17 +69,22 @@ function App() {
         setIsLoggedIn(true);
     }
 
+    function handleSignout() {
+        setIsLoggedIn(false);
+    }
+
 
     return (
         <Switch>
             <ProtectedRoute path="/saved-news" loggedIn={isLoggedIn}>
                 <div className='App'>
                     <div className='page'>
-                        <SavedNewsHeader onNavClick={handlePopupNavClick} isOpen={isPopupNavOpen}>
+                        <SavedNewsHeader onNavClick={handlePopupNavClick} isOpen={isPopupNavOpen} onSignoutClick={handleSignout}>
                             <NavPopup
                                 isOpen={isPopupNavOpen}
                                 isLoggedIn={isLoggedIn}
                                 onSigninClick={handleSigninClick}
+                                onSignoutClick={handleSignout}
                                 onNavClick={handlePopupNavClick}
                             />
                         </SavedNewsHeader>
@@ -94,6 +99,7 @@ function App() {
                         <Header
                             isLoggedIn={isLoggedIn}
                             onSigninClick={handleSigninClick}
+                            onSignoutClick={handleSignout}
                             onNavClick={handlePopupNavClick}
                             onSearchSubmit={handleSearchSubmit}
                             isSearch={isSearch}
