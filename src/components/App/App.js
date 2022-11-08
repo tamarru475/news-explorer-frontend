@@ -28,7 +28,6 @@ function App() {
 
 
     function handleSigninClick() {
-        console.log('what');
         setIsSigninPopupOpen(true);
     }
 
