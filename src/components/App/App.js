@@ -15,9 +15,9 @@ import ValidationContext, {
 } from '../../contexts/ValidationContext';
 function App() {
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-    const [isSearch, setIsSearch] = React.useState(true);
+    const [isSearch, setIsSearch] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
-    const [isSearchResults, setIsSearchResults] = React.useState(true);
+    const [isSearchResults, setIsSearchResults] = React.useState(false);
 
     const [isSigninPopupOpen, setIsSigninPopupOpen] = React.useState(false);
     const [isSignupPopupOpen, setIsSignupPopupOpen] = React.useState(false);
@@ -28,6 +28,7 @@ function App() {
 
 
     function handleSigninClick() {
+        console.log('what');
         setIsSigninPopupOpen(true);
     }
 
@@ -54,13 +55,34 @@ function App() {
         setIsInfoToolsTipOpen(false);
     }
 
+    function handleSearchSubmit(e) {
+        e.preventDefault();
+        setIsSearch(true);
+        setIsLoading(true);
+        setIsLoading(false);
+        setIsSearchResults(true);
+
+    }
+
+    function handleSignin() {
+        setIsSigninPopupOpen(false);
+        setIsLoggedIn(true);
+    }
+
 
     return (
         <Switch>
             <ProtectedRoute path="/saved-news" loggedIn={isLoggedIn}>
                 <div className='App'>
                     <div className='page'>
-                        <SavedNewsHeader />
+                        <SavedNewsHeader onNavClick={handlePopupNavClick} isOpen={isPopupNavOpen}>
+                            <NavPopup
+                                isOpen={isPopupNavOpen}
+                                isLoggedIn={isLoggedIn}
+                                onSigninClick={handleSigninClick}
+                                onNavClick={handlePopupNavClick}
+                            />
+                        </SavedNewsHeader>
                         <SavedNews isSearchResults={isSearchResults} />
                         <Footer />
                     </div>
@@ -69,14 +91,18 @@ function App() {
             <Route exact path='/'>
                 <div className='App'>
                     <div className='page'>
-                        <Header isLoggedIn={isLoggedIn} onSigninClick={handleSigninClick}>
-                            <NavPopup
-                                isOpen={isPopupNavOpen}
-                                onNavClick={handlePopupNavClick}
-                                isLoggedIn={isLoggedIn}
-                                onSigninClick={handleSigninClick}
-                            />
-                        </Header>
+                        <Header
+                            isLoggedIn={isLoggedIn}
+                            onSigninClick={handleSigninClick}
+                            onNavClick={handlePopupNavClick}
+                            onSearchSubmit={handleSearchSubmit}
+                        />
+                        <NavPopup
+                            isOpen={isPopupNavOpen}
+                            isLoggedIn={isLoggedIn}
+                            onSigninClick={handleSigninClick}
+                            onNavClick={handlePopupNavClick}
+                        />
                         <Main
                             isSearch={isSearch}
                             isSearchResults={isSearchResults}
@@ -91,6 +117,7 @@ function App() {
                                     openSigninPopup={handleSigninClick}
                                     isValid={valid}
                                     onValidityChange={setValid}
+                                    onSignin={handleSignin}
                                 />
                                 <SignupPopup
                                     isOpen={isSignupPopupOpen}

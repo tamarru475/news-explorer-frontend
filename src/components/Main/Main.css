@@ -7,7 +7,6 @@
 .main__container{
  background: #F5F6F7;
  margin: 0 auto;
- 
 }
 
 .main__header{
@@ -76,5 +75,27 @@
     padding-bottom: 16px;
     padding-right: 74px;
    }
+
+}
+
+@media screen and (max-width: 700px){
+    .main__header{
+     padding-top: 32px;
+     padding-left: 16px;
+     margin: 0 auto;
+    }
+
+    .main__news-container{
+      max-width: 288px;
+      padding-bottom: 24px;
+    }
+    
+    .main__button{
+     width: 288px;
+     padding-top: 16px;
+     padding-left: 99px;
+     padding-bottom: 16px;
+     padding-right: 98px;
+    }
 
 }

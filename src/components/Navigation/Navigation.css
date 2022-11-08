@@ -12,12 +12,13 @@
  line-height: 24px;
  cursor: pointer;
  padding-top: 11px;
- padding-bottom: 23px;
+ padding-bottom: 17px;
  margin-bottom: 0;
  text-decoration: none;
  color: #B6BCBF;
  transition: 0.3s linear;
  max-width: 68px;
+ text-align: center;
 }
 
 .nav__home:hover{
@@ -34,9 +35,10 @@
  color: #B6BCBF;
  text-decoration: none;
  padding-top: 11px;
- padding-bottom: 26px;
+ padding-bottom: 17px;
  transition: 0.3s linear;
  max-width: 178px;
+ text-align: center;
 }
 
 .nav__articles:hover{
@@ -62,22 +64,28 @@
 
 @media screen and (max-width: 900px){
   .nav{
-    gap: 16px;
     max-width: 100%;
+    width: 208px;
+    gap: 16px;
+    justify-content: flex-end;
   }
 
   .nav__home{
+    padding-top: 8px;
     font-size: 16px;
     max-width: 64px;
+    align-self: flex-end;
+    width: 100%;
   }
 
   .nav__articles{
     font-size: 16px;
     max-width: 160px;
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 700px){
   .nav{
     display: none;
   }

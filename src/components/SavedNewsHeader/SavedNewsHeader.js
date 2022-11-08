@@ -2,7 +2,13 @@ import React from 'react';
 import logoutIcon from '../../images/logout.svg';
 import Navigation from '../Navigation/Navigation';
 import { NavLink } from 'react-router-dom';
-export default function SavedNewsHeader() {
+export default function SavedNewsHeader(props) {
+
+    const fadeInCloseButtonClass = `${props.isOpen ? "savedNewsHeader__nav-button_active" : ""}`;
+
+    function onNavClick() {
+        props.onNavClick();
+    }
 
     return (
         <header className='savedNewsHeader'>
@@ -22,6 +28,14 @@ export default function SavedNewsHeader() {
                         />
                     </button>
                 </div>
+                <div
+                    className={`savedNewsHeader__nav-button ${fadeInCloseButtonClass} `}
+                    onClick={onNavClick}
+                >
+                    <div className="savedNewsHeader__nav-button_line"></div>
+                    <div className="savedNewsHeader__nav-button_line"></div>
+                </div>
+                {props.children}
             </div>
             <div className='savedNewsHeader__text-container'>
                 <p className='savedNewsHeader__subtext'>Saved articles</p>

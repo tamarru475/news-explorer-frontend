@@ -118,10 +118,34 @@
 
   @media screen and (max-width: 600px) {
     .form {
-      padding-top: 76px;
-      padding-bottom: 25px;
-      max-width: 238px;
-      width: 238px;
+      padding-top: 0px;
+      padding-bottom: 16px;
+      max-width: 288px;
+      width: 100%;
+    }
+
+    .form__input-lable{
+      padding: 0;
+    }
+
+    .form__input-lable-email{
+     padding: 0;
+    }
+
+    .form__input-lable-password{
+     padding-top: 30px;
+    }
+
+    .form__input-lable-username{
+      padding-top: 30px;
+    }
+
+    .form__input-lable-password_signup{
+      padding-top: 10px;
+    }
+
+    .form__input-lable-username_signup{
+      padding-top: 10px;
     }
   
     .form__input {
@@ -134,8 +158,12 @@
     }
   
     .form__button {
-      font-size: 14px;
-      line-height: 17px;
-      width: 100%;
+      font-size: 18px;
+      line-height: 24px;
+      width: 288px;
+      padding-top: 20px;
+      padding-left: 79px;
+      padding-bottom: 20px;
+      padding-right: 79px;
     }
   }

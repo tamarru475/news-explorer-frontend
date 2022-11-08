@@ -95,19 +95,19 @@
   }
   
   
-  @media screen and (max-width: 600px) {
-    .popup {
-      max-width: 282px;
-    }
-  
+  @media screen and (max-width: 440px) {
+   
     .popup__container {
-      width: 282px;
+      width: 100%;
+      padding-top: 56px;
     }
   
     .popup__close-button {
       margin-bottom: 13.5px;
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
+      margin-top: 16px;
+      margin-right: 16px;
     }
   
     .popup__form-container {
@@ -115,8 +115,14 @@
     }
   
     .popup__header {
-      font-size: 18px;
-      line-height: 22px;
-      padding-left: 22px;
+      font-size: 24px;
+      line-height: 28px;
+      padding-top: 16px;
+      padding-left: 17px;
+      padding-bottom: 18px;
+    }
+
+    .popup__form-link{
+      padding-bottom: 100%;
     }
   }

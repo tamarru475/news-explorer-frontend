@@ -10,6 +10,12 @@ export default function Header(props) {
     const headerButtonClass = props.isLoggedIn ? 'header__button-profile_white' : 'header__signin-button';
     const headerButtonContent = props.isLoggedIn ? `Elise ` : 'Login';
     const onButtonClick = props.isLoggedIn ? props.onSignoutClick : props.onSigninClick;
+    const fadeInCloseButtonClass = `${props.isOpen ? "header__nav-button_active" : ""}`;
+
+    function onNavClick() {
+        props.onNavClick();
+    }
+
 
 
     return (
@@ -17,12 +23,11 @@ export default function Header(props) {
             <div className='header__top-container'>
                 <div className='header__logo'>NewsExplorer</div>
                 <div className='header__nav-container'>
-                    {props.children}
                     <Navigation >
                         <NavLink exact to='/' className='nav__home' activeClassName='nav__link_active'>Home</NavLink>
                         {props.isLoggedIn ? <NavLink to='/saved-news' className='nav__articles' activeClassName='nav__link_active'>Saved articles</NavLink> : ''}
                     </Navigation>
-                    <button typre='button' className={headerButtonClass} onClick={onButtonClick}>
+                    <button type='button' className={headerButtonClass} onClick={onButtonClick}>
                         {headerButtonContent}
                         {props.isLoggedIn ?
                             <img
@@ -36,11 +41,18 @@ export default function Header(props) {
                         }
                     </button>
                 </div>
+                <div
+                    className={`header__nav-button ${fadeInCloseButtonClass} `}
+                    onClick={onNavClick}
+                >
+                    <div className="header__nav-button_line"></div>
+                    <div className="header__nav-button_line"></div>
+                </div>
             </div>
             <div className='header__content-container' >
                 <h1 className='header__title'>What's going on in the world?</h1>
                 <p className='header__subtitle'>Find the latest news on any topic and save them in your personal account.</p>
-                <SearchForm />
+                <SearchForm onSubmit={props.onSearchSubmit} />
             </div>
         </header>
     )

@@ -2,7 +2,6 @@
  max-width: 1440px;
  display: flex;
  justify-content: space-between;
-
 }
 
 .footer__credit{
@@ -32,6 +31,8 @@
 .footer__links-link{
  text-decoration: none;
  transition: 0.3s linear;
+ display: flex;
+ gap: 40px;
 }
 
 .footer__links-link:hover{
@@ -73,15 +74,15 @@
 .footer__links-github{
  margin: 0;
  background: url('../../images/github.svg') no-repeat center/cover;
- width: 20px;
- height: 20px;
+ width: 24px;
+ height: 24px;
 }
 
 .footer__links-facebook{
  margin: 0;
  background: url('../../images/facebook-squar.svg') no-repeat center/cover;
- width: 20px;
- height: 20px;
+ width: 24px;
+ height: 24px;
 }
 
 @media screen and (max-width: 900px){
@@ -100,14 +101,37 @@
    padding-right: 21px; 
  }
 
- .footer__links-github{
-  width: 22px;
-  height: 22px;
- }
 
  .footer__links-facebook{
     background: url('../../images/facebook-icon.svg')  no-repeat center/cover;
-    width: 22px;
-    height: 22px;
  }
+}
+
+@media screen and (max-width: 700px){
+  .footer{
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  .footer__credit{
+    padding-left: 16px;
+    padding-top: 38px;
+    padding-bottom: 22px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .footer__links-list{
+    padding-top: 20px;
+    padding-left: 16px;
+    justify-content: space-between;
+  }
+
+  .footer__links-link{
+    flex-direction: column;
+  }
+
+  .footer__links-social{
+    gap: 25px;
+  }
 }

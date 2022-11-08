@@ -108,14 +108,14 @@ export default function EditProfilePopup(props) {
             disableButton={disableButton}
         >
             <fieldset className="form__fieldset">
-                <label className='form__input-lable'>Email</label>
+                <label className='form__input-lable form__input-lable-email'>Email</label>
                 <input
                     className={`form__input ${showErrorInputClass}`}
                     type="email"
                     id="signup-email-input"
                     placeholder="Enter email"
                     name="email"
-                    value={email}
+                    value={email || ''}
                     onChange={onEmailChange}
                 />
                 <span
@@ -123,14 +123,14 @@ export default function EditProfilePopup(props) {
                 >
                     {emailError}
                 </span>
-                <label className='form__input-lable'>Password</label>
+                <label className='form__input-lable form__input-lable-password_signup'>Password</label>
                 <input
                     className={`form__input ${showErrorInputClass}`}
                     type="password"
                     id="signup-password-input"
                     placeholder="Enter password"
                     name="password"
-                    value={password}
+                    value={password || ''}
                     onChange={onPasswordChange}
                 />
                 <span
@@ -138,14 +138,14 @@ export default function EditProfilePopup(props) {
                 >
                     {passwordError}
                 </span>
-                <label className='form__input-lable'>Username</label>
+                <label className='form__input-lable form__input-lable-username_signup'>Username</label>
                 <input
                     className={`form__input ${showErrorInputClass}`}
                     type="text"
                     id="signup-username-input"
                     placeholder="Enter your username"
                     name="username"
-                    value={username}
+                    value={username || ''}
                     onChange={onUsernameChange}
                 />
                 <span

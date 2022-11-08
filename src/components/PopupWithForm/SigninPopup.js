@@ -59,10 +59,11 @@ export default function EditProfilePopup(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.onSignin({
-            email: email,
-            password: password,
-        });
+        // props.onSignin({
+        //     email: email,
+        //     password: password,
+        // });
+        props.onSignin();
     }
     return (
         <PopupWithForm
@@ -79,14 +80,14 @@ export default function EditProfilePopup(props) {
             disableButton={disableButton}
         >
             <fieldset className="form__fieldset">
-                <label className='form__input-lable'>Email</label>
+                <label className='form__input-lable form__input-lable-email '>Email</label>
                 <input
                     className={`form__input ${showErrorInputClass}`}
                     type="email"
                     id="signin-email-input"
                     placeholder="Enter email"
                     name="email"
-                    value={email}
+                    value={email || ''}
                     onChange={onEmailChange}
                 />
                 <span
@@ -94,14 +95,14 @@ export default function EditProfilePopup(props) {
                 >
                     {emailError}
                 </span>
-                <label className='form__input-lable'>Password</label>
+                <label className='form__input-lable form__input-lable-password'>Password</label>
                 <input
                     className={`form__input ${showErrorInputClass}`}
                     type="password"
                     id="signin-password-input"
                     placeholder="Enter password"
                     name="password"
-                    value={password}
+                    value={password || ''}
                     onChange={onPasswordChange}
                 />
                 <span

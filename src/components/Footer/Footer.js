@@ -10,14 +10,12 @@ export default function Footer() {
             <ul className='footer__links-list'>
                 <li className='footer__links-link'>
                     <Link to='/' className='footer__links-home'>Home</Link>
-                </li>
-                <li className='footer__links-link'>
-                    <a href='#' className='footer__links-practicum'>Practicum</a>
+                    <a href='https://practicum.yandex.com/' target="_blank" rel="noopener noreferrer" className='footer__links-practicum'>Practicum</a>
                 </li>
                 <li className='footer__links-social'>
-                    <a href='#' className='footer__links-github'>
+                    <a href='https://github.com/tamarru475' target="_blank" rel="noopener noreferrer" className='footer__links-github'>
                     </a>
-                    <a href='#' className='footer__links-facebook'>
+                    <a href='https://www.facebook.com/tamar.rubin.9' target="_blank" rel="noopener noreferrer" className='footer__links-facebook'>
                     </a>
                 </li>
             </ul>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function SearchForm() {
+export default function SearchForm({ onSubmit }) {
     return (
-        <form className="searchForm" name="searchForm">
+        <form className="searchForm" name="searchForm" onSubmit={onSubmit}>
             <fieldset className="searchForm__fieldset">
                 <input
                     type="text"
