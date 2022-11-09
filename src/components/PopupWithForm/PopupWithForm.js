@@ -1,6 +1,6 @@
 import React from "react";
 export default function PopupWithForm({ onClose, isOpen, linkName, onSubmit, openSigninPopup,
-    name, openSignupPopup, title, disabledButtonClass, disableButton, buttonText, children }) {
+    name, openSignupPopup, title, disabledButtonClass, disableButton, buttonText, children, submitError }) {
     const fadeIn = `${isOpen ? "popup_fadein" : ""}`;
 
     React.useEffect(() => {
@@ -46,26 +46,27 @@ export default function PopupWithForm({ onClose, isOpen, linkName, onSubmit, ope
                 <div className={`popup__form-container`}>
                     <h2 className={`popup__header`}>{title}</h2>
                     <form
-                        className={`${name}__form popup__form form`}
+                        className={`${name}__form popup__form`}
                         name={`${name}`}
                         onSubmit={onSubmit}
                     >
                         {children}
                         <span
-                            className={`form__submit-error`}
+                            className={`popup__form-submitError`}
                         >
+                            {submitError}
                         </span>
-                        <fieldset className="form__fieldset-button">
+                        <fieldset className="popup__form-button-fieldset">
                             <button
                                 type="submit"
-                                className={`form__button ${disabledButtonClass}`}
+                                className={`popup__form-button ${disabledButtonClass}`}
                                 disabled={disableButton}
                             >
                                 {buttonText}
                             </button>
                         </fieldset>
                     </form>
-                    <p className='popup__form-link'> or <span className='popup__form-link_span' onClick={onSpanClick}>{linkName}</span></p>
+                    <p className='popup__link'> or <span className='popup__link-span' onClick={onSpanClick}>{linkName}</span></p>
                 </div>
             </div>
         </section >

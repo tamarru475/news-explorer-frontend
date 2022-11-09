@@ -6,7 +6,7 @@ export default function SavedNews(props) {
     return (
         <main className='savedNews'>
             <div className='savedNews__container'>
-                <NewsCardsList isLoggedIn={props.isLoggedIn} />
+                <NewsCardsList isLoggedIn={props.isLoggedIn} savedArticlesArray={props.savedArticlesArray} />
             </div>
         </main>
     )

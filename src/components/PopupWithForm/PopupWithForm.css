@@ -76,7 +76,69 @@
     padding-left: 36px;
   }
 
-  .popup__form-link{
+  .popup__form {
+    padding-bottom: 28px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    width: 358px;
+  }
+
+
+   .popup__form-button-fieldset {
+    border: none;
+    margin: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 30px;
+    max-width: 358px;
+  }
+  
+  .popup__form-button {
+    background: #2F71E5;
+    box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+    border-radius: 100px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    border: none;
+    padding-top: 20px;
+    padding-left: 115px;
+    padding-bottom: 20px;
+    padding-right: 115px;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 360px;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .popup__form-button:hover {
+    background: #347EFF;
+  }
+
+  .popup__form-button:active{
+    background: #2A65CC;
+  }
+  
+  .popup__form-button_disabled {
+    background: #E6E8EB;
+    color: #B6BCBF;
+    box-sizing: border-box;
+    cursor: default;
+  }
+  
+  .popup__form-button_disabled:hover {
+    background: #E6E8EB;
+  }
+
+  .popup__link{
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -87,11 +149,22 @@
     padding-bottom: 28px;
    }
 
-  .popup__form-link_span{
+  .popup__link-span{
     margin: 0;
     text-decoration: none;
     color:  #2F71E5;
     cursor: pointer;
+  }
+
+  .popup__form-submitError{
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #ff0000;
   }
   
   
@@ -113,6 +186,13 @@
     .popup__form-container {
       width: 100%;
     }
+
+    .popup__form {
+      padding-top: 0px;
+      padding-bottom: 16px;
+      max-width: 288px;
+      width: 100%;
+    }
   
     .popup__header {
       font-size: 24px;
@@ -122,7 +202,22 @@
       padding-bottom: 18px;
     }
 
-    .popup__form-link{
+    .popup__form-button-fieldset {
+      padding-top: 46px;
+      max-width: 100%;
+    }
+  
+    .popup__form-button {
+      font-size: 18px;
+      line-height: 24px;
+      width: 288px;
+      padding-top: 20px;
+      padding-left: 79px;
+      padding-bottom: 20px;
+      padding-right: 79px;
+    }
+
+    .popup__link{
       padding-bottom: 100%;
     }
   }

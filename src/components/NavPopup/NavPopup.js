@@ -1,13 +1,15 @@
 import React from 'react';
 import logoutIconWhite from '../../images/logout-white.svg';
 import { NavLink } from 'react-router-dom';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 export default function NavPopup(props) {
+    const currentUser = React.useContext(CurrentUserContext);
     const navPopupActiveClass = props.isOpen ? 'navPopup_fadein' : '';
     const headerButtonClass = props.isLoggedIn ? 'navPopup__button-profile_white' : 'navPopup__signin-button';
-    const headerButtonContent = props.isLoggedIn ? `Elise ` : 'Login';
+    const headerButtonContent = props.isLoggedIn ? currentUser.name : 'Login';
     const buttonFunctionOption = props.isLoggedIn ? props.onSignoutClick : props.onSigninClick
-    const fadeInCloseButtonClass = `${props.isOpen ? "header__nav-button_active" : ""}`;
+    const fadeInCloseButtonClass = `${props.isOpen ? "navPopup__nav-button_active" : ""}`;
 
     function onNavClick() {
         props.onNavClick();
@@ -21,13 +23,13 @@ export default function NavPopup(props) {
     return (
         <div className={`navPopup ${navPopupActiveClass}`}>
             <div className='navPopup__top-container'>
-                <div className='header__logo'>NewsExplorer</div>
+                <div className='navPopup__logo'>NewsExplorer</div>
                 <div
-                    className={`header__nav-button ${fadeInCloseButtonClass} `}
+                    className={`navPopup__nav-button ${fadeInCloseButtonClass} `}
                     onClick={onNavClick}
                 >
-                    <div className="header__nav-button_line"></div>
-                    <div className="header__nav-button_line"></div>
+                    <div className="navPopup__nav-button_line"></div>
+                    <div className="navPopup__nav-button_line"></div>
                 </div>
             </div>
             <div className='navPopup__container'>

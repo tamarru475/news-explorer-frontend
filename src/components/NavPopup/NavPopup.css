@@ -32,6 +32,67 @@
    background: #1A1B22;
 }
 
+.navPopup__logo{
+   margin: 0;
+   font-family: 'Roboto Slab', sans-serif;
+   font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+   max-width: 117px;
+   padding-top: 16px;
+   padding-left: 16px;
+   padding-bottom: 16px;
+   font-size: 16px;
+   line-height: 24px;
+   max-width: 200px;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.navPopup__logo:hover{
+   opacity: 0.8;
+}
+
+.navPopup__nav-button {
+   display: none;
+   flex-direction: column;
+   z-index: 3;
+   width: 24px;
+   padding-top: 24px;
+   padding-bottom: 24px;
+   padding-right: 30px;
+   cursor: pointer;
+   transition: all 0.5s ease-out;
+}
+       
+.navPopup__nav-button .navPopup__nav-button_line {
+   width: 24px;
+   height: 3px;
+   margin: 0 0 5px 0;
+   background: #FFFFFF;
+   transition: all 0.5s ease-out;
+}
+       
+.navPopup__nav-button_line:hover {
+   opacity: 0.85;
+}
+       
+.navPopup__nav-button_active {
+   display: flex;
+   transform: rotate(180deg);
+   margin-right: 24px;
+}
+       
+.navPopup__nav-button_active .navPopup__nav-button_line:nth-child(1) {
+   transform: rotate(45deg) translate(2px, 4px);
+}
+       
+.navPopup__nav-button_active .navPopup__nav-button_line:nth-child(2) {
+   transform: rotate(-45deg) translate(2px, -4px);
+}
+
 .navPopup__container{
    display: flex;
    flex-direction: column;

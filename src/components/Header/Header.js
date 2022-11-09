@@ -4,11 +4,13 @@ import Navigation from '../Navigation/Navigation';
 import backgroundImage from '../../images/phone-backgroung.png';
 import logoutIconWhite from '../../images/logout-white.svg';
 import { NavLink } from 'react-router-dom';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 export default function Header(props) {
+    const currentUser = React.useContext(CurrentUserContext);
 
     const headerButtonClass = props.isLoggedIn ? 'header__button-profile_white' : 'header__signin-button';
-    const headerButtonContent = props.isLoggedIn ? `Elise ` : 'Login';
+    const headerButtonContent = props.isLoggedIn ? currentUser.name : 'Login';
     const onButtonClick = props.isLoggedIn ? props.onSignoutClick : props.onSigninClick;
     const fadeInCloseButtonClass = `${props.isOpen ? "header__nav-button_active" : ""}`;
 

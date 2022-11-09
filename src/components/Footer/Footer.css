@@ -28,14 +28,14 @@
  gap: 40px;
 }
 
-.footer__links-link{
+.footer__links{
  text-decoration: none;
  transition: 0.3s linear;
  display: flex;
  gap: 40px;
 }
 
-.footer__links-link:hover{
+.footer__links:hover{
  opacity: 0.8;
 }
 
@@ -49,7 +49,7 @@
     opacity: 0.8; 
 }
 
-.footer__links-home{
+.footer__links-link{
  margin: 0;
  text-decoration: none;
  font-family: 'Roboto', sans-serif;
@@ -60,29 +60,18 @@
  color: #1A1B22;
 }
 
-.footer__links-practicum{
- margin: 0;
- text-decoration: none;
- font-family: 'Roboto', sans-serif;
- font-style: normal;
- font-weight: 400;
- font-size: 18px;
- line-height: 24px;
- color: #1A1B22;
+.footer__link-social{
+  margin: 0;
+  width: 24px;
+ height: 24px;
 }
 
 .footer__links-github{
- margin: 0;
  background: url('../../images/github.svg') no-repeat center/cover;
- width: 24px;
- height: 24px;
 }
 
 .footer__links-facebook{
- margin: 0;
  background: url('../../images/facebook-squar.svg') no-repeat center/cover;
- width: 24px;
- height: 24px;
 }
 
 @media screen and (max-width: 900px){
@@ -109,8 +98,10 @@
 
 @media screen and (max-width: 700px){
   .footer{
+    max-width: 320px;
     flex-direction: column-reverse;
     justify-content: center;
+    margin: 0 auto;
   }
 
   .footer__credit{
@@ -127,11 +118,15 @@
     justify-content: space-between;
   }
 
-  .footer__links-link{
+  .footer__links{
     flex-direction: column;
   }
 
   .footer__links-social{
     gap: 25px;
   }
+
+  .footer__links-facebook{
+    background: url('../../images/facebook-squar.svg')  no-repeat center/cover;
+ }
 }

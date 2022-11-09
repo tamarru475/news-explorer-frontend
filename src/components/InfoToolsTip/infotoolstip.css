@@ -16,7 +16,7 @@
     transition: 0.3s linear;
   }
   
-  .popup_fadein {
+  .infotoolstip_fadein {
     visibility: visible;
     opacity: 1;
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import ValidationContext from '../../contexts/ValidationContext';
 
 export default function EditProfilePopup(props) {
@@ -11,7 +11,7 @@ export default function EditProfilePopup(props) {
     const [disableButton, setDisableButton] = React.useState(true);
     const [isEmailValid, setIsEmailValid] = React.useState(false);
     const [isPasswordValid, setIsPasswordValid] = React.useState(false);
-    const disabledButtonClass = `${!disableButton ? "" : "form__button_disabled"
+    const disabledButtonClass = `${!disableButton ? "" : "popup__form-button_disabled"
         }`;
 
     const showErrorMessageClass = `${props.isValid ? "" : "form__input-error_active"
@@ -63,11 +63,11 @@ export default function EditProfilePopup(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // props.onSignin({
-        //     email: email,
-        //     password: password,
-        // });
-        props.onSignin();
+        props.onSignin({
+            email: email,
+            password: password,
+        });
+
     }
     return (
         <PopupWithForm
@@ -83,34 +83,36 @@ export default function EditProfilePopup(props) {
             disabledButtonClass={disabledButtonClass}
             disableButton={disableButton}
         >
-            <fieldset className="form__fieldset">
-                <label className='form__input-lable form__input-lable-email '>Email</label>
+            <fieldset className="signin__form-fieldset">
+                <label className='signin__form-lable signin__form-lable-email '>Email</label>
                 <input
-                    className={`form__input ${showErrorInputClass}`}
+                    className={`signin__form-input ${showErrorInputClass}`}
                     type="email"
                     id="signin-email-input"
                     placeholder="Enter email"
                     name="email"
                     value={email || ''}
                     onChange={onEmailChange}
+                    required
                 />
                 <span
-                    className={`form__input-error email-input-error ${showErrorMessageClass}`}
+                    className={`signin__form-input-error  ${showErrorMessageClass}`}
                 >
                     {emailError}
                 </span>
-                <label className='form__input-lable form__input-lable-password'>Password</label>
+                <label className='signin__form-lable signin__form-lable-password'>Password</label>
                 <input
-                    className={`form__input ${showErrorInputClass}`}
+                    className={`signin__form-input ${showErrorInputClass}`}
                     type="password"
                     id="signin-password-input"
                     placeholder="Enter password"
                     name="password"
                     value={password || ''}
                     onChange={onPasswordChange}
+                    required
                 />
                 <span
-                    className={`form__input-error password-input-error ${showErrorMessageClass}`}
+                    className={`signin__form-input-error ${showErrorMessageClass}`}
                 >
                     {passwordError}
                 </span>

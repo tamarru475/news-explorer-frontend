@@ -6,7 +6,7 @@ export default function EditProfilePopup(props) {
     const errorMessages = React.useContext(ValidationContext);
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-    const [username, setUsername] = React.useState('');
+    const [username, setUsername] = React.useState("");
     const [emailError, setEmailError] = React.useState('');
     const [passwordError, setPasswordError] = React.useState('');
     const [usernameError, setUsernameError] = React.useState("");
@@ -93,12 +93,11 @@ export default function EditProfilePopup(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.openInfoToolsTip();
-        // props.onSignup({
-        //     email: email,
-        //     password: password,
-        //     username: username,
-        // });
+        props.onSignup({
+            email: email,
+            password: password,
+            name: username,
+        });
     }
     return (
         <PopupWithForm
@@ -113,50 +112,54 @@ export default function EditProfilePopup(props) {
             openSigninPopup={props.openSigninPopup}
             disabledButtonClass={disabledButtonClass}
             disableButton={disableButton}
+            submitError={props.submitError}
         >
-            <fieldset className="form__fieldset">
-                <label className='form__input-lable form__input-lable-email'>Email</label>
+            <fieldset className="signup__form-fieldset">
+                <label className='signup__form-lable signup__form-lable-email'>Email</label>
                 <input
-                    className={`form__input ${showErrorInputClass}`}
+                    className={`signup__form-input ${showErrorInputClass}`}
                     type="email"
                     id="signup-email-input"
                     placeholder="Enter email"
                     name="email"
                     value={email || ''}
                     onChange={onEmailChange}
+                    required
                 />
                 <span
-                    className={`form__input-error email-input-error ${showErrorMessageClass}`}
+                    className={`form__input-error ${showErrorMessageClass}`}
                 >
                     {emailError}
                 </span>
-                <label className='form__input-lable form__input-lable-password_signup'>Password</label>
+                <label className='signup__form-lable signup__form-lable-password'>Password</label>
                 <input
-                    className={`form__input ${showErrorInputClass}`}
+                    className={`signup__form-input ${showErrorInputClass}`}
                     type="password"
                     id="signup-password-input"
                     placeholder="Enter password"
                     name="password"
                     value={password || ''}
                     onChange={onPasswordChange}
+                    required
                 />
                 <span
-                    className={`form__input-error password-input-error ${showErrorMessageClass}`}
+                    className={`form__input-error ${showErrorMessageClass}`}
                 >
                     {passwordError}
                 </span>
-                <label className='form__input-lable form__input-lable-username_signup'>Username</label>
+                <label className='signup__form-lable signup__form-lable-username'>Username</label>
                 <input
-                    className={`form__input ${showErrorInputClass}`}
+                    className={`signup__form-input ${showErrorInputClass}`}
                     type="text"
                     id="signup-username-input"
                     placeholder="Enter your username"
                     name="username"
                     value={username || ''}
                     onChange={onUsernameChange}
+                    required
                 />
                 <span
-                    className={`form__input-error username-input-error ${showErrorMessageClass}`}
+                    className={`form__input-error ${showErrorMessageClass}`}
                 >
                     {usernameError}
                 </span>

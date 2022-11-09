@@ -13,7 +13,7 @@ export default function Main(props) {
                         <div className='main__container'>
                             <h2 className='main__header'>Search results</h2>
                             <div className='main__news-container'>
-                                <NewsCardsList isSearchResults={props.isSearchResults} />
+                                <NewsCardsList isSearchResults={props.isSearchResults} isLoggedIn={props.isLoggedIn} />
                                 <button type='button' className='main__button'>Show more</button>
                             </div>
                         </div>

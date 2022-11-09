@@ -46,7 +46,7 @@ perspective: 1px;
 }
 
 
-.newsCard__deleteMessage{
+.newsCard__infotip{
  margin: 0;
  visibility: hidden;
  opacity: 0;
@@ -77,6 +77,11 @@ perspective: 1px;
  cursor: pointer;
 }
 
+.newsCard__infotip_active:has(+ .newsCard__icon-container:hover){
+  visibility: visible;
+  opacity: 1;
+}
+
 .newsCard__bookmark-icon{
  background: url('../../images/bookmark-noraml.svg') no-repeat center/cover;
  width: 24px;
@@ -101,14 +106,10 @@ perspective: 1px;
  transition: 0.3s linear;
 }
 
-.newsCard__trash-icon:active{
+.newsCard__trash-icon:hover{
  background: url('../../images/trash-active.svg') no-repeat center/cover;  
 }
 
-.newsCard__deleteMessage_active{
- visibility: visible;
- opacity: 1;
-}
 
 .newsCard__text-container{
   padding: 20px 24px;

@@ -196,11 +196,27 @@
 }
 
 @media screen and (max-width: 600px){
+  .savedNewsHeader{
+    max-width: 320px;
+  }
+
+  .savedNewsHeader__logo{
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-bottom: 16px;
+  }
+
   .savedNewsHeader__nav-profile{
     display: none;
   }
 
   .savedNewsHeader__nav-button{
     display: flex;
+  }
+
+  .savedNewsHeader__text-container{
+    max-width: 288px;
+    padding-left: 0;
+    margin: 0 auto;
   }
 }
