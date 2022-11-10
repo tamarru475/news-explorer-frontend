@@ -14,7 +14,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ValidationContext, {
     errorMessages,
 } from '../../contexts/ValidationContext';
-import submitErrorMessages from '../../utils/Constants';
+import submitErrorMessages from '../../utils/constants';
 import mainApi from '../../utils/MainApi';
 import newsApi from '../../utils/NewsApi';
 import * as auth from '../../utils/Auth';
