@@ -55,7 +55,7 @@ class MainApi {
 const mainApi = new MainApi({
     baseUrl: "http://localhost:3001",
     headers: {
-        "Content-Type": "http://localhost:3001",
+        "Content-Type": "application/json",
     },
 });
 

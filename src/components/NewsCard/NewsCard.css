@@ -6,6 +6,7 @@ border-radius: 16px;
 display: flex;
 flex-direction: column;
 perspective: 1px;
+max-height: 576px;
 }
 
 .newsCard__image-container{
@@ -176,6 +177,7 @@ perspective: 1px;
 @media screen and (max-width: 900px){
   .newsCard{
     max-width: 224px;
+    max-height: 420px;
   }
 
   .newsCard__image-container{
@@ -233,6 +235,7 @@ perspective: 1px;
 @media screen and (max-width: 700px){
   .newsCard{
     max-width: 288px;
+    max-height: 440px;
   }
 
   .newsCard__image-container{

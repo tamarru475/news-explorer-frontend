@@ -1,17 +1,20 @@
 import React from 'react';
 import NewsCard from '../NewsCard/NewsCard';
-import { newsCardsArray } from '../../utils/Constants';
+import { nanoid } from 'nanoid';
 
 
 export default function NewsCardsList(props) {
 
-    const arrayLength = props.isSearchResults ? newsCardsArray.slice(0, 3) : props.savedArticlesArray;
+    const arrayType = props.isSearchResults ? props.newsArticleArray : props.savedArticlesArray
+    const arrayLength = props.isShowMore ? arrayType : arrayType.slice(0, 3);
+
+
     return (
         <section className='newsCardsList'>
             <ul className='newsCardsList__list'>
                 {arrayLength.map((card) => (
                     <NewsCard
-                        key={card._id}
+                        key={nanoid()}
                         card={card}
                         isSearchResults={props.isSearchResults}
                         isLoggedIn={props.isLoggedIn}

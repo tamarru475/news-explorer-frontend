@@ -8,7 +8,7 @@ export default function NavPopup(props) {
     const navPopupActiveClass = props.isOpen ? 'navPopup_fadein' : '';
     const headerButtonClass = props.isLoggedIn ? 'navPopup__button-profile_white' : 'navPopup__signin-button';
     const headerButtonContent = props.isLoggedIn ? currentUser.name : 'Login';
-    const buttonFunctionOption = props.isLoggedIn ? props.onSignoutClick : props.onSigninClick
+    const buttonFunctionOption = props.isLoggedIn ? props.onSignoutClick : props.onSigninClick;
     const fadeInCloseButtonClass = `${props.isOpen ? "navPopup__nav-button_active" : ""}`;
 
     function onNavClick() {
@@ -16,7 +16,7 @@ export default function NavPopup(props) {
     }
 
     function onButtonClick() {
-        props.onNavClick();
+        onNavClick();
         buttonFunctionOption();
     }
 

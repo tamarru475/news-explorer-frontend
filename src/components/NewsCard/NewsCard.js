@@ -26,8 +26,8 @@ export default function NewsCard(props) {
     }
     return (
         <div className='newsCard'>
-            <div className='newsCard__image-container' style={{ background: `url(${props.card.image}) no-repeat center/cover` }}>
-                <div className={`newsCard__keyword ${keywordClass}`}>{props.card.keyword}</div>
+            <div className='newsCard__image-container' style={{ background: `url(${props.card.urlToImage}) no-repeat center/cover` }}>
+                <div className={`newsCard__keyword ${keywordClass}`}>nature</div>
                 <div className={`newsCard__righthand-container ${iconWrapperClass}`}>
                     <div className={`newsCard__infotip ${infotipActiveClass}`}>{infotipText}</div>
                     <div className='newsCard__icon-container'>
@@ -36,10 +36,10 @@ export default function NewsCard(props) {
                 </div>
             </div>
             <div className='newsCard__text-container'>
-                <p className='newsCard__date'>{props.card.date}</p>
+                <p className='newsCard__date'>{props.card.publishedAt}</p>
                 <h3 className='newsCard__title'>{props.card.title}</h3>
-                <p className='newsCard__text'>{props.card.text}</p>
-                <p className='newsCard__source'>{props.card.source}</p>
+                <p className='newsCard__text'>{props.card.description}</p>
+                <p className='newsCard__source'>{props.card.source.name}</p>
             </div>
         </div>
     )

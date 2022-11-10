@@ -54,15 +54,10 @@ const newsCardsArray = [
 
 ]
 
-const defaultConfig = {
-    formSelector: ".form",
-    inputSelector: ".form__input",
-    submitButtonSelector: ".form__button",
-    inactiveButtonClass: "form__button_disabled",
-    inputErrorClass: "form__input_type_error",
-    errorClass: "form__input-error_active",
+const submitErrorMessages = {
+    signinValidationError: 'email or password are incorrect',
+    signupConflictError: 'This email is not available',
+    serverError: 'An error occured on the server'
 }
 
-const signinForm = document.querySelector(".signin__form");
-
-export { newsCardsArray, defaultConfig, signinForm };
+export { newsCardsArray, submitErrorMessages };

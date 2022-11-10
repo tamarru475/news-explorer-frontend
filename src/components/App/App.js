@@ -14,8 +14,12 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ValidationContext, {
     errorMessages,
 } from '../../contexts/ValidationContext';
+import { submitErrorMessages } from '../../utils/Constants';
 import mainApi from '../../utils/MainApi';
+import newsApi from '../../utils/NewsApi';
 import * as auth from '../../utils/Auth';
+
+
 
 function App() {
     /// Auth hooks ///
@@ -35,7 +39,7 @@ function App() {
 
     ///Articles hooks ///
     const [savedArticles, setSavedArticles] = React.useState([]);
-
+    const [searchArticles, setSearchArticles] = React.useState([]);
     ///Context hooks ///
 
     const [valid, setValid] = React.useState(true);
@@ -85,10 +89,12 @@ function App() {
 
 
     function handleSigninClick() {
+        setSubmitError('');
         setIsSigninPopupOpen(true);
     }
 
     function handleSignupClick() {
+        setSubmitError('');
         setIsSignupPopupOpen(true);
     }
 
@@ -104,15 +110,25 @@ function App() {
         setIsSigninPopupOpen(false);
         setIsSignupPopupOpen(false);
         setIsInfoToolsTipOpen(false);
+        setIsPopupNavOpen(false);
     }
 
-    function handleSearchSubmit(e) {
-        e.preventDefault();
+    function handleSearchSubmit(keyword) {
         setIsSearch(true);
         setIsLoading(true);
-        setIsLoading(false);
-        setIsSearchResults(true);
-
+        newsApi.getArticles(keyword)
+            .then((data) => {
+                if (data.articles.length === 0) {
+                    setIsSearchResults(false);
+                } else {
+                    setSearchArticles(data.articles);
+                    setIsSearchResults(true);
+                }
+            }).catch((err) => {
+                console.log(err)
+            }).finally(() => {
+                setIsLoading(false);
+            })
     }
 
 
@@ -121,9 +137,13 @@ function App() {
         auth.register(values).then(() => {
             setIsSignupPopupOpen(false);
             setIsInfoToolsTipOpen(true);
-        }).catch((err) => {
-            console.log(err);
-            setSubmitError(err);
+        }).catch((error) => {
+            if (error === 'Error 409') {
+                console.log(error);
+                setSubmitError(submitErrorMessages.signupConflictError);
+            } else {
+                setSubmitError(submitErrorMessages.serverError);
+            }
         });
     }
 
@@ -134,9 +154,12 @@ function App() {
                 setCurrentUser(user.user);
                 setIsLoggedIn(true);
                 setIsSigninPopupOpen(false);
-            }).catch((err) => {
-                console.log(err);
-                setSubmitError(err);
+            }).catch((error) => {
+                if (error === 'Error 400') {
+                    setSubmitError(submitErrorMessages.signinValidationError);
+                } else {
+                    setSubmitError(submitErrorMessages.serverError);
+                }
             });
     }
 
@@ -188,6 +211,7 @@ function App() {
                                 isLoggedIn={isLoggedIn}
                                 onSigninClick={handleSigninClick}
                                 onNavClick={handlePopupNavClick}
+                                onSignoutClick={handleSignout}
                             />
                             <Main
                                 isSearch={isSearch}
@@ -195,6 +219,7 @@ function App() {
                                 isLoading={isLoading}
                                 onNavClick={handlePopupNavClick}
                                 isLoggedIn={isLoggedIn}
+                                newsArticleArray={searchArticles}
                             >
                                 <ValidationContext.Provider value={errorMessages}>
                                     <SigninPopup
@@ -205,6 +230,7 @@ function App() {
                                         isValid={valid}
                                         onValidityChange={setValid}
                                         onSignin={handleSigninSubmit}
+                                        submitError={submitError}
                                     />
                                     <SignupPopup
                                         isOpen={isSignupPopupOpen}

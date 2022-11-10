@@ -82,6 +82,7 @@ export default function EditProfilePopup(props) {
             openSigninPopup={props.openSigninPopup}
             disabledButtonClass={disabledButtonClass}
             disableButton={disableButton}
+            submitError={props.submitError}
         >
             <fieldset className="signin__form-fieldset">
                 <label className='signin__form-lable signin__form-lable-email '>Email</label>
