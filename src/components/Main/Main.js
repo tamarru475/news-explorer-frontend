@@ -20,13 +20,13 @@ export default function Main(props) {
     }, [newsArticles])
 
     React.useEffect(() => {
-        if (arrayLength >= props.newsArticleArray.length) {
+        if (arrayLength >= newsArticles.length) {
             setIsShowMore(false)
         }
-    }, [arrayLength])
+    }, [arrayLength, newsArticles.length])
 
     function handleButtonClick() {
-        if (arrayLength < props.newsArticleArray.length) {
+        if (arrayLength < newsArticles.length) {
             setArrayLength(arrayLength + 3);
         }
     }

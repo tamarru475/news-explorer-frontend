@@ -1,5 +1,5 @@
 import React from 'react';
-import authorAvatar from '../../images/author-photo.png'
+import authorAvatar from '../../images/developer-image.jpeg';
 
 export default function About() {
 
@@ -14,14 +14,16 @@ export default function About() {
                 <h4 className='about__heading'>About the author</h4>
                 <div className='about__paragraph-container'>
                     <p className='about__paragraph'>
-                        This block describes the project author. Here you
-                        should indicate your name, what you do, and which
-                        development technologies you know.
+                        My name is Tamar Rubin, I am a web developer.
+                        To develop this project I used my newly acquired knowledge with:
+                        React.js, JavaScript Classes, RestApi, CSS, HTML, Node.js, MongoDB,
+                        Google Cloud and more!
                     </p>
                     <p className='about__paragraph'>
-                        You can also talk about your experience with
-                        Practicum, what you learned there, and how you can
-                        help potential customers.
+                        Recently, I participated in the “Practicum 100” program by Yandex because I was
+                        inspired by the world of coding. I feel like working in a way that is organized,
+                        precise, cohesive, and proactive - trying to foresee problems and find solutions in
+                        advance speaks to me in a very personal way.
                     </p>
                 </div>
             </div>

@@ -66,6 +66,10 @@
    cursor: pointer;
    transition: all 0.5s ease-out;
 }
+
+.navPopup__nav-button:hover{
+   opacity: 0.8;
+}
        
 .navPopup__nav-button .navPopup__nav-button_line {
    width: 24px;
@@ -113,6 +117,10 @@
   color: #FFFFFF;
 }
 
+.navPopup__link:hover{
+   opacity: 0.8;
+}
+
 .navPopup__signin-button{
    background: none;
    width: 288px;
@@ -129,6 +137,10 @@
    padding-top: 16px;
    padding-bottom: 16px;
    padding-left: 1px;
+}
+
+.navPopup__signin-button:hover{
+ opacity: 0.8;
 }
 
 .navPopup__button-profile_white{
@@ -151,6 +163,10 @@
    padding-right: 7px;
    border: 1px solid #FFFFFF;
    color: #FFFFFF;
+}
+
+.navPopup__button-profile_white:hover{
+   opacity: 0.8;
 }
 
 
