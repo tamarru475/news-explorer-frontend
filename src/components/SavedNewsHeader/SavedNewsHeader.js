@@ -6,7 +6,9 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 export default function SavedNewsHeader(props) {
     const currentUser = React.useContext(CurrentUserContext);
     const fadeInCloseButtonClass = `${props.isOpen ? "savedNewsHeader__nav-button_active" : ""}`;
-    const articlesKeywords = props.savedArticlesArray.slice(0, 2).map((article) => article.keyword + ' ,');
+    const articlesKeywords = props.savedArticlesArray.slice(0, 2).map((article) => article.keyword + ' ');
+    const extraKeywords = props.savedArticlesArray.length === 3 ? 1 : props.savedArticlesArray.length < 4 ? 0 : props.savedArticlesArray.length - 2;
+    const areThereKeywords = props.savedArticlesArray.length === 0 ? 'None yet' : articlesKeywords + ' and ' + extraKeywords + ' other';
 
 
     function onNavClick() {
@@ -45,7 +47,7 @@ export default function SavedNewsHeader(props) {
                 <p className='savedNewsHeader__subtext'>Saved articles</p>
                 <h5 className='savedNewsHeader__title'>{currentUser.name}, you have {props.savedArticlesArray.length} saved articles</h5>
                 <p className='savedNewsHeader__keywords'>By keywords:
-                    <span className='savedNewsHeader__keywords-bold'> {articlesKeywords} and {props.savedArticlesArray.length - 2} other</span>
+                    <span className='savedNewsHeader__keywords-bold'> {areThereKeywords} </span>
                 </p>
             </div>
         </header>

@@ -119,6 +119,7 @@ max-height: 576px;
   grid-gap: 16px;
   flex-grow: 1;
   max-width: 352px;
+  cursor: pointer;
 }
 
 .newsCard__date{

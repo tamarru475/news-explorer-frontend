@@ -27,7 +27,7 @@ class MainApi {
         });
     }
 
-    saveNewArticle(inputValues, token) {
+    saveNewArticle(card, token) {
         return customFetch(`${this._baseUrl}/articles`, {
             method: "POST",
             headers: {
@@ -35,8 +35,13 @@ class MainApi {
                 authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
-                name: inputValues.title,
-                link: inputValues.link,
+                keyword: card.keyword,
+                title: card.article.title,
+                text: card.article.description,
+                date: card.article.publishedAt,
+                source: card.article.source.name,
+                link: card.article.url,
+                image: card.article.urlToImage,
             }),
         });
     }
