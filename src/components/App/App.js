@@ -17,6 +17,7 @@ import * as auth from '../../utils/Auth';
 
 
 
+
 function App() {
     /// Auth hooks ///
     const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -26,6 +27,7 @@ function App() {
     const [isSearch, setIsSearch] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
     const [isSearchResults, setIsSearchResults] = React.useState(false);
+    const [isServerError, setIsServerError] = React.useState(false);
 
     ///Popups hooks ///
     const [isSigninPopupOpen, setIsSigninPopupOpen] = React.useState(false);
@@ -36,10 +38,12 @@ function App() {
     ///Articles hooks ///
     const [savedArticles, setSavedArticles] = React.useState([]);
     const [searchArticles, setSearchArticles] = React.useState([]);
+    const [currenytKeyword, setCurrentKeyword] = React.useState('');
     ///Context hooks ///
 
-    const [valid, setValid] = React.useState(true);
     const [currentUser, setCurrentUser] = React.useState({});
+
+    /// Initial requests ///
 
     React.useEffect(() => {
         const jwt = localStorage.getItem('jwt');
@@ -83,6 +87,7 @@ function App() {
         }
     }, [currentUser])
 
+    /// popups handlers ///
 
     function handleSigninClick() {
         setSubmitError('');
@@ -109,24 +114,55 @@ function App() {
         setIsPopupNavOpen(false);
     }
 
+    /// Articles handlers ///
+
     function handleSearchSubmit(keyword) {
         setIsSearch(true);
         setIsLoading(true);
+        setIsServerError(false);
         newsApi.getArticles(keyword)
             .then((data) => {
                 if (data.articles.length === 0) {
                     setIsSearchResults(false);
                 } else {
                     setSearchArticles(data.articles);
+                    setCurrentKeyword(keyword);
                     setIsSearchResults(true);
                 }
             }).catch((err) => {
-                console.log(err)
+                console.log(err);
+                setIsServerError(true);
             }).finally(() => {
                 setIsLoading(false);
             })
     }
 
+    function handleSaveClick(card) {
+        const token = localStorage.getItem('jwt');
+        mainApi.saveNewArticle(card, token)
+            .then((newCard) => {
+                setSavedArticles([newCard, ...savedArticles]);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    function handleDeleteClick(articleId) {
+        const token = localStorage.getItem('jwt');
+        mainApi.deleteArticle(articleId, token)
+            .then(() => {
+                const newSavedArticle = savedArticles.filter((currentArticle) => {
+                    return currentArticle._id !== articleId;
+                })
+                setSavedArticles(newSavedArticle)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    /// Auth handlers ///
 
     function handleSignupSubmit(values) {
         console.log(values);
@@ -136,9 +172,9 @@ function App() {
         }).catch((error) => {
             if (error === 'Error 409') {
                 console.log(error);
-                setSubmitError(submitErrorMessages.signupConflictError);
+                setSubmitError('This email is not available');
             } else {
-                setSubmitError(submitErrorMessages.serverError);
+                setSubmitError('An error occured on the server');
             }
         });
     }
@@ -152,9 +188,9 @@ function App() {
                 setIsSigninPopupOpen(false);
             }).catch((error) => {
                 if (error === 'Error 400') {
-                    setSubmitError(submitErrorMessages.signinValidationError);
+                    setSubmitError('email or password are incorrect');
                 } else {
-                    setSubmitError(submitErrorMessages.serverError);
+                    setSubmitError('An error occured on the server');
                 }
             });
     }
@@ -184,7 +220,13 @@ function App() {
                                     onNavClick={handlePopupNavClick}
                                 />
                             </SavedNewsHeader>
-                            <SavedNews isSearchResults={isSearchResults} savedArticlesArray={savedArticles} />
+                            <SavedNews
+                                isSearchResults={isSearchResults}
+                                savedArticlesArray={savedArticles}
+                                keyword={currenytKeyword}
+                                onClickDelete={handleDeleteClick}
+                                isLoggedIn={isLoggedIn}
+                            />
                             <Footer />
                         </CurrentUserContext.Provider>
                     </div>
@@ -216,29 +258,29 @@ function App() {
                                 onNavClick={handlePopupNavClick}
                                 isLoggedIn={isLoggedIn}
                                 newsArticleArray={searchArticles}
+                                onClickSave={handleSaveClick}
+                                keyword={currenytKeyword}
+                                onClickDelete={handleDeleteClick}
+                                savedArticlesArray={savedArticles}
+                                isServerError={isServerError}
+                                openSigninPopup={handleSigninClick}
                             >
-                                <ValidationContext.Provider value={errorMessages}>
-                                    <SigninPopup
-                                        isOpen={isSigninPopupOpen}
-                                        onClose={closeAllPopups}
-                                        openSignupPopup={handleSignupClick}
-                                        openSigninPopup={handleSigninClick}
-                                        isValid={valid}
-                                        onValidityChange={setValid}
-                                        onSignin={handleSigninSubmit}
-                                        submitError={submitError}
-                                    />
-                                    <SignupPopup
-                                        isOpen={isSignupPopupOpen}
-                                        onClose={closeAllPopups}
-                                        openSignupPopup={handleSignupClick}
-                                        openSigninPopup={handleSigninClick}
-                                        onSignup={handleSignupSubmit}
-                                        isValid={valid}
-                                        onValidityChange={setValid}
-                                        submitError={submitError}
-                                    />
-                                </ValidationContext.Provider>
+                                <SigninPopup
+                                    isOpen={isSigninPopupOpen}
+                                    onClose={closeAllPopups}
+                                    openSignupPopup={handleSignupClick}
+                                    openSigninPopup={handleSigninClick}
+                                    onSignin={handleSigninSubmit}
+                                    submitError={submitError}
+                                />
+                                <SignupPopup
+                                    isOpen={isSignupPopupOpen}
+                                    onClose={closeAllPopups}
+                                    openSignupPopup={handleSignupClick}
+                                    openSigninPopup={handleSigninClick}
+                                    onSignup={handleSignupSubmit}
+                                    submitError={submitError}
+                                />
                                 <InfoTooltip
                                     isOpen={isInfoToolsTipOpen}
                                     onClose={closeAllPopups}

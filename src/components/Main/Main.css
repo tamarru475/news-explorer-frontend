@@ -32,6 +32,8 @@
 
 .main__button{
  margin: 0;
+ visibility: visible;
+ opacity: 1;
  width: 288px;
  background: #FFFFFF;
  border-radius: 80px;
@@ -52,6 +54,12 @@
 
 .main__button:hover{
  background: #E8E8E8;
+}
+
+.main__button_hidden{
+  visibility: visible;
+  opacity: 0;
+  cursor: auto;
 }
 
 @media screen and (max-width: 900px){

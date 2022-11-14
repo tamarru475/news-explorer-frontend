@@ -63,6 +63,7 @@
  cursor: pointer;
  width: 24px;
  height: 24px;
+ padding-right: 7px;
 }
 
 .savedNewsHeader__nav-button {

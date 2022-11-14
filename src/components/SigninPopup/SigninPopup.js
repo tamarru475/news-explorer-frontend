@@ -1,72 +1,56 @@
 import React from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import ValidationContext from '../../contexts/ValidationContext';
 
 export default function EditProfilePopup(props) {
-    const errorMessages = React.useContext(ValidationContext);
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
-    const [emailError, setEmailError] = React.useState('');
-    const [passwordError, setPasswordError] = React.useState('');
+    const [values, setValues] = React.useState({
+        email: '',
+        password: '',
+    });
+    const [errors, setErrors] = React.useState({
+        email: '',
+        password: '',
+    });
+    const [isValid, setIsValid] = React.useState(false);
     const [disableButton, setDisableButton] = React.useState(true);
-    const [isEmailValid, setIsEmailValid] = React.useState(false);
-    const [isPasswordValid, setIsPasswordValid] = React.useState(false);
+
+
     const disabledButtonClass = `${!disableButton ? "" : "popup__form-button_disabled"
         }`;
 
-    const showErrorMessageClass = `${props.isValid ? "" : "form__input-error_active"
+    const showErrorMessageClass = `${isValid ? "" : "form__input-error_active"
         }`;
 
-    const showErrorInputClass = `${props.isValid ? "" : "form__input_type_error"
+    const showErrorInputClass = `${isValid ? "" : "form__input_type_error"
         }`;
+
 
     React.useEffect(() => {
-        setEmail('');
-        setPassword('');
+        setValues({
+            email: '',
+            password: '',
+        });
+        setErrors({
+            email: '',
+            password: '',
+        });
+        setIsValid(true);
+        setDisableButton(true)
     }, [props.isOpen]);
 
-    const onEmailChange = (e) => {
-        setEmail(e.target.value);
-        if (e.target.value.length === 0) {
-            setEmailError(`${errorMessages.emptyField}`);
-            props.onValidityChange(false);
-            setDisableButton(true);
-            setIsEmailValid(false);
-        } else {
-            setEmailError("");
-            setIsEmailValid(true);
-            checkFormsVlidation();
-        }
+    const handleChange = (event) => {
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        setValues({ ...values, [name]: value });
+        setErrors({ ...errors, [name]: target.validationMessage });
+        setIsValid(target.closest("form").checkValidity());
+        setDisableButton(isValid ? false : true);
     };
-
-    const onPasswordChange = (e) => {
-        setPassword(e.target.value);
-        if (e.target.value.length === 0) {
-            props.onValidityChange(false);
-            setPasswordError(`${errorMessages.emptyField}`);
-            setDisableButton(true);
-            setIsPasswordValid(false);
-        } else {
-            setIsPasswordValid(true);
-            setPasswordError("");
-            checkFormsVlidation();
-        }
-    };
-
-    const checkFormsVlidation = () => {
-        if (isPasswordValid && isEmailValid) {
-            props.onValidityChange(true);
-            setDisableButton(false);
-        }
-    }
 
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.onSignin({
-            email: email,
-            password: password,
-        });
+        props.onSignin(values);
 
     }
     return (
@@ -92,14 +76,14 @@ export default function EditProfilePopup(props) {
                     id="signin-email-input"
                     placeholder="Enter email"
                     name="email"
-                    value={email || ''}
-                    onChange={onEmailChange}
+                    value={values.email || ''}
+                    onChange={handleChange}
                     required
                 />
                 <span
                     className={`signin__form-input-error  ${showErrorMessageClass}`}
                 >
-                    {emailError}
+                    {errors.email}
                 </span>
                 <label className='signin__form-lable signin__form-lable-password'>Password</label>
                 <input
@@ -108,14 +92,14 @@ export default function EditProfilePopup(props) {
                     id="signin-password-input"
                     placeholder="Enter password"
                     name="password"
-                    value={password || ''}
-                    onChange={onPasswordChange}
+                    value={values.password || ''}
+                    onChange={handleChange}
                     required
                 />
                 <span
                     className={`signin__form-input-error ${showErrorMessageClass}`}
                 >
-                    {passwordError}
+                    {errors.password}
                 </span>
             </fieldset>
         </PopupWithForm>

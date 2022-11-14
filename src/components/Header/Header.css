@@ -90,6 +90,10 @@ transition: 0.3s linear;
     cursor: pointer;
     transition: all 0.5s ease-out;
    }
+
+   .header__nav-button:hover{
+    opacity: 0.8;
+   }
         
    .header__nav-button .header__nav-button_line {
     width: 24px;

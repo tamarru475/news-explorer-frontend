@@ -5,16 +5,29 @@ import Preloader from '../Preloader/Preloader';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 export default function Main(props) {
+    const [arrayLength, setArrayLength] = React.useState(3);
+    const [isShowMore, setIsShowMore] = React.useState(true);
+    const newsArticles = props.newsArticleArray;
+    const savedArticles = props.savedArticlesArray;
+    const arrayType = props.isSearchResults ? newsArticles : savedArticles;
+    const articleArray = arrayType === savedArticles ? savedArticles : newsArticles.slice(0, arrayLength);
 
-    const [isShowMore, setIsShowMore] = React.useState(false);
+    const buttonHiddenClass = isShowMore ? '' : 'main__button_hidden';
 
-    const buttonText = isShowMore ? 'Show less' : 'Show more';
+    React.useEffect(() => {
+        setArrayLength(3);
+        setIsShowMore(true);
+    }, [newsArticles])
+
+    React.useEffect(() => {
+        if (arrayLength >= newsArticles.length) {
+            setIsShowMore(false)
+        }
+    }, [arrayLength, newsArticles.length])
 
     function handleButtonClick() {
-        if (!isShowMore) {
-            setIsShowMore(true);
-        } else {
-            setIsShowMore(false);
+        if (arrayLength < newsArticles.length) {
+            setArrayLength(arrayLength + 3);
         }
     }
 
@@ -29,13 +42,18 @@ export default function Main(props) {
                                 <NewsCardsList
                                     isSearchResults={props.isSearchResults}
                                     isLoggedIn={props.isLoggedIn}
-                                    newsArticleArray={props.newsArticleArray}
-                                    isShowMore={isShowMore} />
-                                <button type='button' className='main__button' onClick={handleButtonClick}>{buttonText}</button>
+                                    onClickSave={props.onClickSave}
+                                    keyword={props.keyword}
+                                    onClickDelete={props.onClickDelete}
+                                    savedArticlesArray={savedArticles}
+                                    articleArray={articleArray}
+                                    openSigninPopup={props.openSigninPopup}
+                                />
+                                <button type='button' className={`main__button ${buttonHiddenClass}`} onClick={handleButtonClick}>Show more</button>
                             </div>
                         </div>
                         :
-                        <NotFoundPage /> : ''}
+                        <NotFoundPage isServerError={props.isServerError} /> : ''}
             {props.children}
             <About />
         </main>
