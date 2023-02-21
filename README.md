@@ -39,6 +39,6 @@ This project features a news app where users can:
 - Chat between users
 - great animation
 
-**github Page:**
+**Page:**
 
 there use to be an official site but I run out of credit for google cloud remote server
