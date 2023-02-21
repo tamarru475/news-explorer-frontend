@@ -28,7 +28,7 @@ This project features a news app where users can:
 - Java Script
 - React
 - Form validation
-- Registration & Authorization 
+- Registration & Authorization
 - Api interaction
 
 **Hope to improve:**
@@ -39,9 +39,6 @@ This project features a news app where users can:
 - Chat between users
 - great animation
 
-**Offical Page:**
+**github Page:**
 
-https://www.tamarsnewsapp.students.nomoredomainssbs.ru/
-
-currently in offial page th news search only outputs one result,
-if npm run start the search is done based on keyword!
+there use to be an official site but I run out of credit for google cloud remote server
